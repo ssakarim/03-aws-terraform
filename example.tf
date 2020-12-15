@@ -41,8 +41,8 @@ resource "aws_eip" "ip" {
 }
 
 resource "aws_key_pair" "ec2_ssh_key" {
+  #the used command in cygwin is -> ssh-keygen -y -f EC2tutorial.pem
   key_name   = "my_EC2_tutorial_public_key"
-  #public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCmgiQFS7XZ63Ben6MvKlDlR8LJ5HsRQQQKXFMnEu+vmnVKEIc5PrstlcjM5w6nc1QIyJPbtCVWaKqbdxwwKAm+pXw8UeDwViJnCyr0nqWRG9xWTGgV3Zdmp9NfOCIeqmXmzr9CrGDr8weKGJGPhHLdIXekIvLPT2/S50BIcIk5WTVI49e9gXXbtdnpB2++b8J9+9o7MSBdxE6zniNY0ZO85P6Q1ux/Oeeflk9VfKPRc43A1V6I1PuegomXdqUG8EDWjEcpXlkVOoRz67V7pANdDHnf6LjxphAVyxhNis4uK+j5NjHbzFcOJHbLwOnmyurTIpGuXkLCygij8cJWycv7"
   public_key = var.pub_key
 }
 
