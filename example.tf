@@ -35,18 +35,18 @@ resource "aws_security_group" "ec2_ssh" {
 }
 
 resource "aws_instance" "example" {
-  ami             = "ami-0d5d1a3aa3516231f" #Amazon Linux 2/us-west-2
+  ami             = "ami-0e472933a1395e172" #Amazon Linux 2/us-west-2
   instance_type   = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ec2_ssh.id]
   key_name        = aws_key_pair.ec2_ssh_key.key_name
   user_data = <<-EOF
-  #!/bin/bash
-  yum update -y
-  yum install -y httpd.x86_64
-  systemctl start httpd.service
-  systemctl enable httpd.service
-  echo "Hello World from $(hostname -f)" > /var/www/html/index.html
-  EOF
+              #!/bin/bash
+              yum update -y
+              yum install -y httpd.x86_64
+              systemctl start httpd.service
+              systemctl enable httpd.service
+              echo "Hello World from $(hostname -f)" > /var/www/html/index.html
+              EOF
 }
 
 resource "aws_key_pair" "ec2_ssh_key" {
