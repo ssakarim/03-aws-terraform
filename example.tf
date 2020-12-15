@@ -35,7 +35,7 @@ resource "aws_security_group" "ec2_ssh" {
 }
 
 resource "aws_instance" "example" {
-  ami             = "ami-0e472933a1395e172" #Amazon Linux 2/us-west-2
+  ami             = "ami-0bd39c806c2335b95" #Amazon Linux 2/eu-central-1
   instance_type   = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ec2_ssh.id]
   key_name        = aws_key_pair.ec2_ssh_key.key_name

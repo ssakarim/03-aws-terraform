@@ -1,6 +1,6 @@
 variable "aws_region" {
   type    = string
-  default = "us-west-2"
+  default = "eu-central-1"
 }
 
 variable "pub_key" {
