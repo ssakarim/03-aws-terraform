@@ -27,25 +27,22 @@ resource "aws_security_group" "ec2_ssh" {
     cidr_blocks = ["0.0.0.0/0"]
   }
   ingress {
-    from_port = 80
+    from_port = 8080
     protocol = "tcp"
-    to_port = 80
+    to_port = 8080
     cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
 resource "aws_instance" "example" {
-  ami             = "ami-0bd39c806c2335b95" #Amazon Linux 2/eu-central-1
+  ami             = "ami-08d70e59c07c61a3a" #Amazon Linux 2/us-west-2
   instance_type   = "t2.micro"
   vpc_security_group_ids = [aws_security_group.ec2_ssh.id]
   key_name        = aws_key_pair.ec2_ssh_key.key_name
   user_data = <<-EOF
               #!/bin/bash
-              yum update -y
-              yum install -y httpd.x86_64
-              systemctl start httpd.service
-              systemctl enable httpd.service
-              echo "Hello World from $(hostname -f)" > /var/www/html/index.html
+              echo "Hello World from $(hostname -f)" > index.html
+              nohup busybox httpd -f -p 8080 &
               EOF
 }
 
