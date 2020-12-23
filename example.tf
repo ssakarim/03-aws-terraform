@@ -2,7 +2,7 @@ terraform {
   backend "remote" {
     organization = "snefro"
     workspaces {
-      name = "certificate_preparation"
+      name = "03-aws-terraform"
     }
   }
   required_providers {
